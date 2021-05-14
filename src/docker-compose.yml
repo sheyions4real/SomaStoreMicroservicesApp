@@ -2,13 +2,25 @@ version: '3.4'
 
 services:
   catalogdb:
-    image: mongo
+    image: mongo    # this image has already been pulled to our docker desktop using docker pull mongo
+
+  basketdb:
+    image: redis:alpine    # this image will be pulled to our docker desktop using docker pull redis:alpine
+
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
+
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+
 
       # volumes are used to save the database files for persistence.
       # the docker mongo image will remain but the database files(records, tables and info) will be stored in the volume
