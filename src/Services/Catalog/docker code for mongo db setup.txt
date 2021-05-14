@@ -1,0 +1,157 @@
+docker ps  // to check if any docker container is running
+docker images  /// t check if any docker images has been created
+docker pull mongo   // download and install the mongo container image
+docker run -d -p 27017:27017 --name shopping-mongo mongo    // This will look for the docker image name mongo and create a shopping-mongo container with mongo db server
+docker logs --details shopping-mongo       // to display the shopping-mongo logs
+docker logs -f shopping-mongo       // to display the shopping-mongo logs
+
+docker exec -it shopping-mongo /bin/bash       /// this will connect to the mongo db container image, run this in the 							visual studio terminal, and run mongo db command
+
+if you try docker run command and it says already in use
+run
+
+docker start 43ff    // to start the container the 43ff is the first 4 digit of the container id
+
+docker stop 43ff    // to stop the container  the 43ff is the first 4 digit of the container id
+
+docker rm 43ff    // to remove the container the 43ff is the first 4 digit of the container id 
+
+
+to stop or remove all containers or images from local computer
+docker stop $(docker ps -a -q)
+
+docker rm $(docker ps -a -q)
+
+
+
+
+docker system prune     // stop a;; services and remove all containers and images
+
+the docker-compose will pull required images and create the containers afresh
+
+
+
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d  # this will run the docker compose file to create the container image and then run the project
+
+
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down       # this will stop all the containeres specifued in the docker-compose. yml file
+
+
+
+
+if starting docker gives an issue
+run on cmd
+net stop vmms
+
+run net 
+net start vmms
+
+
+
+
+-- on the mongo terminal
+ls      /// to liist all db
+
+mongo     /// to run mongo command
+
+show dbs     /// or show databases
+
+use CatalogDb
+
+db.createCollection('Products')
+
+show collections			/// to show collections
+
+db.Products.insertMany(
+[
+{
+"Name": "Asus Laptop",
+"Category": "Computers",
+"Summary": "Summary",
+"Description": "Description",
+"ImageFile": "ImageFile",
+"Price": 54.93
+},
+{
+"Name": "Hp Laptop",
+"Category": "Computers",
+"Summary": "Summary",
+"Description": "Description",
+"ImageFile": "ImageFile",
+"Price": 64.93
+},
+{
+"Name": "Dell Laptop",
+"Category": "Computers",
+"Summary": "Summary",
+"Description": "Description",
+"ImageFile": "ImageFile",
+"Price": 89.93
+}
+])
+
+
+db.Products.find({}).pretty()
+
+
+
+db.Products.remove({})
+
+
+
+use 
+
+Update-Package -ProjectName Catalog.API // use this command in Package Manager Console to update all nuget packages
+
+
+
+
+DOCKER COMPOSE
+
+Docker Compose is used to containerized complex applications using a docker file
+right click the project and add Container Ochestration Support and select Docker to add docker compose to the project solution
+
+this add the Docker-Compose.yml file that reads set up configuration from the dockerFile. The docker-compose.yml file list the container image or images to deploy as well as volumes. The DockerFile denotes the project build, publish and run settings for the docker container 
+the docker-compose.override.yml file that gives more configuration for each container
+
+
+
+After all configurations stop the shopping-mongo container since the docker compose file will automate the container orchestration process.
+
+
+
+
+download and setup the mongoclient images from pub.docker.com
+
+docker run -d -p 3000:3000 mongoclient/mongoclient
+
+this is a gui to interact with mongo database. this conntainer is created directly from online since the image was not pulled to the local system
+once created run on the browser
+
+localhost:3000
+
+
+
+
+
+
+docker pull redis            // pull the redis image from pub.docker
+
+
+docker run -d -p 6379:6379 --name aspnetrun-redis redis         this will create the redis container
+
+
+docker logs -f aspnetrun-redis      this will show the redis logs
+
+
+docker exec -it aspnetrun-redis  /bin/bash                        connects to the redis container cli for you to access the redis database server through command line
+
+
+
+
+
+
+
+
+
+
