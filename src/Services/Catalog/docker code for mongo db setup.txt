@@ -148,9 +148,16 @@ docker exec -it aspnetrun-redis  /bin/bash                        connects to th
 
 
 
+Portainer -- Container namegement tool to manage docker containes
+https://portainer.readthedocs.io/en/stable/deployment.html
+https://hub.docker.com/r/portainer/portainer-ce
 
+http://localhost:9000/ 				- potainer url
+create username: admin and 
+password admin1234
 
-
+logout and re login
+ you will see all container in the docker desktop
 
 
 

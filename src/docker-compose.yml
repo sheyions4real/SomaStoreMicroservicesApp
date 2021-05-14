@@ -7,6 +7,9 @@ services:
   basketdb:
     image: redis:alpine    # this image will be pulled to our docker desktop using docker pull redis:alpine
 
+                                       # username: admin and password: admin1234
+  portainer:                         # Portainer is a lightweight management UI which allows you to easily manage your Docker AND Kubernetes clusters.
+    image: portainer/portainer-ce    # this image will be pulled to our docker desktop using docker pull portainer/portainer-ce
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
@@ -27,3 +30,4 @@ services:
       # saved on the user computer /data/db foldder
 volumes: 
   mongo_data:
+  portainer_data:
