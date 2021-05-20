@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+option csharp_namespace = "Discount.Grpc.Protos";
+
+// create a new service in the proto language
+service DiscountProtoService{
+
+	//create and expose the GetDiscount endpoint 
+	//GetDiscountRequest is the message and CouponModel is the response
+	rpc GetDiscount(GetDiscountRequest) returns (CouponModel);
+
+	//Create Discount endpoint 
+	rpc CreateDiscount (CreateDiscountRequest) returns (CouponModel);
+
+	// Update Discount endpoint
+	rpc UpdateDiscount (UpdateDiscountRequest) returns (CouponModel);
+
+	//delete discount 
+	rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
+
+
+}
+
+
+// define the implementation  message for GetDiscount. its like the c# class to implemnt the functionality in the GetDiscount Service when called
+message GetDiscountRequest
+{
+// this is like the parameter to be passed to the Grpc API
+	string productName =1;
+}
+
+// define the implementation  response for GetDiscount. its like the c# class to implemnt the functionality in the GetDiscount Service when called
+message CouponModel
+{
+// this is the response model when the Grpc GetDiscount endpoint is called
+	int32 id=1;
+	string productName =2;
+	string description =3;
+	string amount =4;
+}
+
+
+message CreateDiscountRequest
+{
+	CouponModel coupon =1;
+}
+
+
+
+message UpdateDiscountRequest
+{
+	CouponModel coupon =1;
+}
+
+message DeleteDiscountRequest
+{
+	string ProductName =1;
+}
+
+
+message DeleteDiscountResponse
+{
+	bool success =1;
+}
+
+
+
+
