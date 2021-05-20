@@ -161,4 +161,13 @@ logout and re login
 
 
 
+Discount API
 
+DB CREATED ON PGADMIN CONTAINER 
+DERVER IS CREATED AND DATABASE is connected (discounddb pgsql container)
+create table Coupon(
+ID SERIAL PRIMARY KEY NOT NULL,
+ProductName Varchar(24) NOT NULL,
+Description TEXT,
+Amount INT
+);

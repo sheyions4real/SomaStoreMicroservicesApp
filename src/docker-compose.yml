@@ -7,7 +7,16 @@ services:
   basketdb:
     image: redis:alpine    # this image will be pulled to our docker desktop using docker pull redis:alpine
 
-                                       # username: admin and password: admin1234
+
+
+  discountdb:
+    image: postgres    # this image will be pulled to our docker desktop using docker pull postgress
+
+  pgadmin:                      # THIS image containerized the pgadmin to manage our postgre sql database
+    image: dpage/pgadmin4       # this image will be pulled to our docker desktop using docker pull dpage/pgadmin4
+
+
+                                         # username: admin and password: admin1234
   portainer:                         # Portainer is a lightweight management UI which allows you to easily manage your Docker AND Kubernetes clusters.
     image: portainer/portainer-ce    # this image will be pulled to our docker desktop using docker pull portainer/portainer-ce
 
@@ -28,6 +37,15 @@ services:
       # volumes are used to save the database files for persistence.
       # the docker mongo image will remain but the database files(records, tables and info) will be stored in the volume
       # saved on the user computer /data/db foldder
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discountapi
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+
 volumes: 
   mongo_data:
   portainer_data:
+  postgres_data:
+  pgadmin_data:
+
